@@ -2,8 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/Link";
 import styles from "../styles/Home.module.css";
+import styles1 from "../styles/Home1.module.css";
+import styles2 from "../styles/Home2.module.css";
 
 export default function Home() {
+  // console.log("styles", styles);
+  // console.log("styles1", styles1);
+  // console.log("styles2", styles2);
   return (
     <div className={styles.container}>
       <Head>
@@ -12,23 +17,33 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <nav className={styles.navbar}>
+        <ul>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="about">About</Link>
+          </li>
+          <li>
+            <Link href="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+        </ul>
+      </nav>
+
       <main className={styles.main}>
-        <nav className={styles.navbar}>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link href="/blog">Blog</Link>
-            </li>
-          </ul>
-        </nav>
+        <h2>BlogPost App</h2>
+        <article>
+          <div>
+            <h5 className={styles1.color}>Title</h5>
+            <p className={styles2.bgColor}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            </p>
+          </div>
+        </article>
       </main>
 
       <footer className={styles.footer}>
