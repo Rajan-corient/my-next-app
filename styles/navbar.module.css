@@ -1,0 +1,10 @@
+.navbar ul {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul li {
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0rem 1rem;
+}
