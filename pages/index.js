@@ -4,6 +4,7 @@ import Link from "next/Link";
 import styles from "../styles/Home.module.css";
 import styles1 from "../styles/Home1.module.css";
 import styles2 from "../styles/Home2.module.css";
+import Dummy from "../components/dummyStyledJsx";
 
 export default function Home() {
   // console.log("styles", styles);
@@ -36,6 +37,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <h2>BlogPost App</h2>
+        <Dummy />
+        <p className="dummy">Test dummy css</p>
         <article>
           <div>
             <h5 className={styles1.color}>Title</h5>
