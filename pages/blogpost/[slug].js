@@ -4,26 +4,29 @@ import styles from "../../styles/BlogPost.module.css";
 
 // Step1: Find the file corresponding to the slug.
 // Step2: Populate them inside the page.
-const Slug = () => {
+const Slug = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [blog, setBlog] = useState(null);
-  const router = useRouter();
-  const { slug } = router.query;
-  console.log("slug", slug);
+  const [blog, setBlog] = useState(props.myBlog.res);
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    getBlogData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  // Below code is used for Client Side Rendering
+  // const [blog, setBlog] = useState(null);
+  // const router = useRouter();
+  // const { slug } = router.query;
+  // console.log("slug", slug);
 
-  const getBlogData = async () => {
-    const apiUrl = `http://localhost:3000/api/getblog?slug=${slug}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    setBlog(data.res);
-    console.log("data", data);
-  };
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+  //   getBlogData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [router.isReady]);
+
+  // const getBlogData = async () => {
+  //   const apiUrl = `http://localhost:3000/api/getblog?slug=${slug}`;
+  //   const res = await fetch(apiUrl);
+  //   const data = await res.json();
+  //   setBlog(data.res);
+  //   console.log("data", data);
+  // };
 
   return (
     <div className={styles.container}>
@@ -34,5 +37,18 @@ const Slug = () => {
     </div>
   );
 };
+
+// This gets called on every request
+export async function getServerSideProps(context) {
+  // Fetch data from external API
+  const { slug } = context.query;
+  const apiUrl = `http://localhost:3000/api/getblog?slug=${slug}`;
+  const res = await fetch(apiUrl);
+  const myBlog = await res.json();
+  console.log("myBlog", myBlog);
+
+  // Pass data to the page via props
+  return { props: { myBlog } };
+}
 
 export default Slug;

@@ -4,21 +4,23 @@ import styles from "../styles/blog.module.css";
 
 // step1: Read all the files from blogdata directory
 // step2: Iterate through then and display in blog component
-const Blog = () => {
-  const [blogList, setBlogList] = useState([]);
+const Blog = (props) => {
+  const [blogList, setBlogList] = useState(props.allBlogs);
 
-  useEffect(() => {
-    console.log("blog component rendered");
-    getBlogs();
-  }, []);
+  // This is called for client side rendering
+  // const [blogList, setBlogList] = useState([]);
+  // useEffect(() => {
+  //   console.log("blog component rendered");
+  //   getBlogs();
+  // }, []);
 
-  const getBlogs = async () => {
-    const apiUrl = "http://localhost:3000/api/blog";
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    setBlogList(data);
-    console.log("data", data);
-  };
+  // const getBlogs = async () => {
+  //   const apiUrl = "http://localhost:3000/api/blog";
+  //   const res = await fetch(apiUrl);
+  //   const data = await res.json();
+  //   setBlogList(data);
+  //   console.log("data", data);
+  // };
 
   return (
     <div className={styles.container}>
@@ -39,5 +41,17 @@ const Blog = () => {
     </div>
   );
 };
+
+// This gets called on every request
+export async function getServerSideProps(context) {
+  // Fetch data from external API
+  const apiUrl = "http://localhost:3000/api/blog";
+  const res = await fetch(apiUrl);
+  const allBlogs = await res.json();
+  console.log("allBlogs", allBlogs);
+
+  // Pass data to the page via props
+  return { props: { allBlogs } };
+}
 
 export default Blog;
