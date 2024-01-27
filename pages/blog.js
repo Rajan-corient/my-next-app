@@ -27,7 +27,7 @@ const Blog = () => {
           <div className={styles.blogItem} key={item.slug}>
             <h3>{item.title}</h3>
             <p>
-              {item.content.substr(0, 50)}.....
+              {item.content.substr(0, 40)}.....
               <Link href={`/blogpost/${item.slug}`}>
                 <span className={styles.readMore}>Read more</span>
               </Link>
