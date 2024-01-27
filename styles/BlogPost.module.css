@@ -1,0 +1,15 @@
+.container {
+  padding: 0 24rem;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.blogItem h3 {
+  cursor: pointer;
+}
