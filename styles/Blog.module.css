@@ -13,3 +13,8 @@
 .blogItem h3 {
   cursor: pointer;
 }
+
+.readMore {
+  color: #2e2f2efa;
+  font-size: small;
+}
