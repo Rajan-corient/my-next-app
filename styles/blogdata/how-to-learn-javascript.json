@@ -1,0 +1,6 @@
+{
+  "title": "How to learn Javascript",
+  "content": "The easiest way to get started with Javascript is by using create-next-app . This CLI tool enables you to quickly start building a new Javascript application, with everything set up for you. You can create a new app using the default Javascript template, or by using one of the official Javascript examples",
+  "slug": "how-to-learn-javascript",
+  "author": "Rajan Gupta"
+}

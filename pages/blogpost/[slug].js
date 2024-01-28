@@ -38,17 +38,38 @@ const Slug = (props) => {
   );
 };
 
+// This method is used for server side rendering
 // This gets called on every request
-export async function getServerSideProps(context) {
-  // Fetch data from external API
-  const { slug } = context.query;
-  const apiUrl = `http://localhost:3000/api/getblog?slug=${slug}`;
-  const res = await fetch(apiUrl);
-  const myBlog = await res.json();
-  console.log("myBlog", myBlog);
+// export async function getServerSideProps(context) {
+//   // Fetch data from external API
+//   const { slug } = context.query;
+//   const apiUrl = `http://localhost:3000/api/getblog?slug=${slug}`;
+//   const res = await fetch(apiUrl);
+//   const myBlog = await res.json();
+//   console.log("myBlog", myBlog);
 
-  // Pass data to the page via props
-  return { props: { myBlog } };
-}
+//   // Pass data to the page via props
+//   return { props: { myBlog } };
+// }
+
+// These method is used for static side generation
+
+// This method is used for static side generation
+export const getStaticPaths = async (context) => {
+  return {
+    paths: [
+      { params: { slug: "how-to-learn-javascript" } },
+      { params: { slug: "how-to-learn-next" } },
+      { params: { slug: "how-to-learn-react" } },
+    ],
+    fallback: true, // false or blocking
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const { slug } = context.params;
+  const myBlog = fs.promises.readFile(`blogdata/${slug}.json`, "utf8");
+  return { props: { myBlog: JSON.parse(myBlog) } };
+};
 
 export default Slug;

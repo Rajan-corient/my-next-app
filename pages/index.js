@@ -27,7 +27,17 @@ export default function Home() {
 
       <main className={styles.main}>
         <h2 className={styles.title}>BlogPost App</h2>
-        <Image
+        {/* commented as Image component doesn't work with SSG */}
+        {/* <Image
+          className={styles.homeImg}
+          src="/coder.png"
+          alt="home"
+          width={237}
+          height={158}
+        /> */}
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className={styles.homeImg}
           src="/coder.png"
           alt="home"

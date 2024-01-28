@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/Link";
 import styles from "../styles/blog.module.css";
+import * as fs from "fs";
 
 // step1: Read all the files from blogdata directory
 // step2: Iterate through then and display in blog component
@@ -42,16 +43,28 @@ const Blog = (props) => {
   );
 };
 
-// This gets called on every request
-export async function getServerSideProps(context) {
-  // Fetch data from external API
-  const apiUrl = "http://localhost:3000/api/blog";
-  const res = await fetch(apiUrl);
-  const allBlogs = await res.json();
-  console.log("allBlogs", allBlogs);
+// This method is used for server side rendering
+// // This gets called on every request
+// export async function getServerSideProps(context) {
+//   // Fetch data from external API
+//   const apiUrl = "http://localhost:3000/api/blog";
+//   const res = await fetch(apiUrl);
+//   const allBlogs = await res.json();
+//   console.log("allBlogs", allBlogs);
 
-  // Pass data to the page via props
+//   // Pass data to the page via props
+//   return { props: { allBlogs } };
+// }
+
+// This method is used for static side generation
+export const getStaticProps = async (context) => {
+  const data = await fs.promises.readdir("blogdata");
+  for (const item of data) {
+    const filedata = await fs.promises.readFile(`blogdata/${item}`, "utf-8");
+    allBlogs.push(JSON.parse(filedata));
+  }
+  console.log(allBlogs);
   return { props: { allBlogs } };
-}
+};
 
 export default Blog;
