@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/BlogPost.module.css";
+import * as fs from "fs";
 
 // Step1: Find the file corresponding to the slug.
 // Step2: Populate them inside the page.
 const Slug = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [blog, setBlog] = useState(props.myBlog.res);
+  const [blog, setBlog] = useState(props.myBlog);
 
   // Below code is used for Client Side Rendering
   // const [blog, setBlog] = useState(null);
@@ -68,7 +69,7 @@ export const getStaticPaths = async (context) => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const myBlog = fs.promises.readFile(`blogdata/${slug}.json`, "utf8");
+  const myBlog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf8");
   return { props: { myBlog: JSON.parse(myBlog) } };
 };
 

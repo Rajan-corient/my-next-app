@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/Link";
 import styles from "../styles/Home.module.css";
 import styles1 from "../styles/Home1.module.css";

@@ -58,12 +58,12 @@ const Blog = (props) => {
 
 // This method is used for static side generation
 export const getStaticProps = async (context) => {
+  const allBlogs = [];
   const data = await fs.promises.readdir("blogdata");
   for (const item of data) {
     const filedata = await fs.promises.readFile(`blogdata/${item}`, "utf-8");
     allBlogs.push(JSON.parse(filedata));
   }
-  console.log(allBlogs);
   return { props: { allBlogs } };
 };
 
