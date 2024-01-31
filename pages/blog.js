@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/Link";
-import styles from "../styles/blog.module.css";
+import styles from "../styles/Blog.module.css";
 import * as fs from "fs";
 
 // step1: Read all the files from blogdata directory
@@ -29,13 +29,15 @@ const Blog = (props) => {
         {blogList.map((item) => (
           <div className={styles.blogItem} key={item.slug}>
             <h3>{item.title}</h3>
+            <div>
+              <p>{item.content.substr(0, 40)}</p>
+              <span className={styles.author}> --- {item.author}</span>
+            </div>
             <p>
-              {item.content.substr(0, 40)}.....
               <Link href={`/blogpost/${item.slug}`}>
-                <span className={styles.readMore}>Read more</span>
+                <button className={styles.readMore}>Read More</button>
               </Link>
             </p>
-            <p>{item.author}</p>
           </div>
         ))}
       </main>

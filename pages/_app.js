@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }) {
   // return <div>Rajan Gupta</div>;
   return (
     <>
-      <Navbar />
+      <Navbar
+        style={{ background: "#000", color: "#fff", padding: "1rem 0rem" }}
+      />
       <Component {...pageProps} />
     </>
   );

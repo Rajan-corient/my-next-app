@@ -1,4 +1,6 @@
 .container {
+  width: 45vw;
+  margin: auto;
   padding: 0 2rem;
 }
 
@@ -18,5 +20,19 @@
 }
 
 .homeImg {
-  border-radius: 5px;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.h2 {
+  font-size: 2.5rem;
+}
+
+.btn {
+  background: #000000;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 7px 6px;
 }

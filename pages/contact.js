@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/contact.module.css";
+import styles from "../styles/Contact.module.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({});
@@ -38,8 +38,9 @@ const Contact = () => {
 
   return (
     <div className={styles.formContainer}>
+      <h2>Contact Us</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -50,9 +51,10 @@ const Contact = () => {
             placeholder="Enter name"
             value={formData.name || ""}
             onChange={handleChange}
+            required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="exampleInputEmail1">Email address</label>
           <input
             type="email"
@@ -63,9 +65,10 @@ const Contact = () => {
             placeholder="Enter email"
             value={formData.email || ""}
             onChange={handleChange}
+            required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="exampleInputEmail1">Email</label>
           <input
             type="phone"
@@ -76,9 +79,10 @@ const Contact = () => {
             placeholder="Enter phone number"
             value={formData.phone || ""}
             onChange={handleChange}
+            required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="desc">Elaborate your concern</label>
           <textarea
             className={styles.formControl}
@@ -87,9 +91,10 @@ const Contact = () => {
             rows="3"
             value={formData.desc || ""}
             onChange={handleChange}
+            required
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className={styles.btn}>
           Submit
         </button>
       </form>

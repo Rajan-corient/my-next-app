@@ -15,6 +15,16 @@
 }
 
 .readMore {
-  color: #2e2f2efa;
+  background: #000000;
+  color: #fff;
+  border-radius: 6px;
+  padding: 3px 6px;
   font-size: small;
+}
+
+.author {
+  display: block;
+  margin-top: 0px;
+  font-size: small;
+  text-align: end;
 }

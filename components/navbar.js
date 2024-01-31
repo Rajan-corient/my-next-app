@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/Link";
-import styles from "../styles/navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <nav className={styles.navbar}>
+    <nav style={props.style} className={styles.navbar}>
       <ul>
         <li>
           <Link href="/">Home</Link>
