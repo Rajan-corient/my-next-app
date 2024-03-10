@@ -5,10 +5,10 @@ import * as fs from "fs";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 // step1: Read all the files from blogdata directory
-// step2: Iterate through then and display in blog component
+// step2: Iterate through then display in blog component
 const Blog = (props) => {
   const [blogList, setBlogList] = useState(props.allBlogs || []);
-  const [count, setCount] = useState(2);
+  const [count, setCount] = useState(4);
 
   // This is called for client side rendering
   // const [blogList, setBlogList] = useState([]);
@@ -26,11 +26,12 @@ const Blog = (props) => {
   // };
 
   const fetchData = async () => {
-    const apiUrl = `http://localhost:3000/api/blog/?count=${count + 2}`;
+    const apiUrl = `http://localhost:3000/api/blog/?count=${count + 4}`;
     const res = await fetch(apiUrl);
     const data = await res.json();
-    setCount(count + 2);
-    setBlogList((prev) => [...prev, ...data]);
+    console.log("data", data);
+    setCount((_count) => _count + 4);
+    setBlogList(data);
   };
 
   return (
@@ -95,12 +96,12 @@ const Blog = (props) => {
 //   return { props: { allBlogs } };
 // }
 
-// This method is used for static side generation
+// This method is used for static site generation
 export const getStaticProps = async (context) => {
   const data = await fs.promises.readdir("blogdata");
   const allBlogs = [];
   const allCount = data.length;
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 4; i++) {
     let item = data[i];
     const filedata = await fs.promises.readFile(`blogdata/${item}`, "utf-8");
     allBlogs.push(JSON.parse(filedata));

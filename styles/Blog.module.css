@@ -10,6 +10,10 @@
   padding: 2rem 0;
 }
 
+.blogItem {
+  padding: 1rem 0;
+}
+
 .blogItem h3 {
   cursor: pointer;
 }

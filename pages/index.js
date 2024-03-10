@@ -85,7 +85,6 @@ export default function Home() {
           </div>
         </article>
       </main>
-      <footer></footer>
     </div>
   );
 }
