@@ -57,12 +57,16 @@ const Slug = (props) => {
 
 // This method is used for static side generation
 export const getStaticPaths = async (context) => {
+  const allFiles = await fs.promises.readdir("blogdata");
+  const pathList = allFiles.map((item) => {
+    return {
+      params: {
+        slug: item.split(".")[0],
+      },
+    };
+  });
   return {
-    paths: [
-      { params: { slug: "how-to-learn-javascript" } },
-      { params: { slug: "how-to-learn-next" } },
-      { params: { slug: "how-to-learn-react" } },
-    ],
+    paths: pathList,
     fallback: true, // false or blocking
   };
 };
