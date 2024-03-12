@@ -39,7 +39,7 @@ const Slug = (props) => {
       {blog ? (
         <main className={styles.main}>
           <h3>{blog?.title}</h3>
-          {/* <p>{blog?.content}</p> */}
+          <p>{blog?.content}</p>
         </main>
       ) : (
         <div>No content found</div>

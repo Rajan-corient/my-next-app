@@ -72,7 +72,7 @@ const Blog = (props) => {
               <div className={styles.blogItem} key={item.slug}>
                 <h3>{item.title}</h3>
                 <div>
-                  {/* <p>{item?.content?.substr(0, 40)}</p> */}
+                  <p>{item?.content?.substr(0, 40)}</p>
                   <span className={styles.author}> --- {item.author}</span>
                 </div>
                 <p>
