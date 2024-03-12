@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import styles from "../styles/Blog.module.css";
 import * as fs from "fs";
 import InfiniteScroll from "react-infinite-scroll-component";
