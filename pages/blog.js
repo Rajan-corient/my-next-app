@@ -51,33 +51,36 @@ const Blog = (props) => {
             </p>
           </div>
         ))} */}
-
-        <InfiniteScroll
-          dataLength={blogList.length}
-          next={fetchData}
-          hasMore={props.allCount !== blogList.length}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          {blogList.map((item) => (
-            <div className={styles.blogItem} key={item.slug}>
-              <h3>{item.title}</h3>
-              <div>
-                <p>{item?.content?.substr(0, 40)}</p>
-                <span className={styles.author}> --- {item.author}</span>
-              </div>
-              <p>
-                <Link href={`/blogpost/${item.slug}`}>
-                  <button className={styles.readMore}>Read More</button>
-                </Link>
+        {blogList.length ? (
+          <InfiniteScroll
+            dataLength={blogList.length}
+            next={fetchData}
+            hasMore={props.allCount !== blogList.length}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
               </p>
-            </div>
-          ))}
-        </InfiniteScroll>
+            }
+          >
+            {blogList.map((item) => (
+              <div className={styles.blogItem} key={item.slug}>
+                <h3>{item.title}</h3>
+                <div>
+                  <p>{item?.content?.substr(0, 40)}</p>
+                  <span className={styles.author}> --- {item.author}</span>
+                </div>
+                <p>
+                  <Link href={`/blogpost/${item.slug}`}>
+                    <button className={styles.readMore}>Read More</button>
+                  </Link>
+                </p>
+              </div>
+            ))}
+          </InfiniteScroll>
+        ) : (
+          <div>No Blog Posts Found.</div>
+        )}
       </main>
     </div>
   );

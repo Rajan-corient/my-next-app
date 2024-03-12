@@ -7,7 +7,7 @@ import * as fs from "fs";
 // Step2: Populate them inside the page.
 const Slug = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [blog, setBlog] = useState(props.myBlog || {});
+  const [blog, setBlog] = useState(props.myBlog);
 
   // Below code is used for Client Side Rendering
   // const [blog, setBlog] = useState(null);
@@ -31,10 +31,14 @@ const Slug = (props) => {
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h3>{blog?.title}</h3>
-        <p>{blog?.content}</p>
-      </main>
+      {blog ? (
+        <main className={styles.main}>
+          <h3>{blog?.title}</h3>
+          <p>{blog?.content}</p>
+        </main>
+      ) : (
+        <div>No content found</div>
+      )}
     </div>
   );
 };
