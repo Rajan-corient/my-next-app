@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/BlogPost.module.css";
 import * as fs from "fs";
+import Error from "next/error";
 
 // Step1: Find the file corresponding to the slug.
 // Step2: Populate them inside the page.
@@ -28,6 +29,10 @@ const Slug = (props) => {
   //   setBlog(data.res);
   //   console.log("data", data);
   // };
+
+  if (!blog) {
+    return <Error statusCode="500" />;
+  }
 
   return (
     <div className={styles.container}>

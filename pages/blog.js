@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Blog.module.css";
 import * as fs from "fs";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Error from "next/error";
 
 // step1: Read all the files from blogdata directory
 // step2: Iterate through then display in blog component
@@ -33,6 +34,10 @@ const Blog = (props) => {
     setCount((_count) => _count + 4);
     setBlogList(data);
   };
+
+  if (!(blogList && blogList.length)) {
+    return <Error statusCode="500" />;
+  }
 
   return (
     <div className={styles.container}>
